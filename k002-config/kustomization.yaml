@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+ - ../k001-base
+configMapGenerator:
+- name: nsx-neutron-bin
+  files:
+  - config/db-sync.sh
+  - config/neutron-server.sh
+secretGenerator:
+- name: nsx-neutron-etc
+  files:
+  - config/neutron.conf
+  - nsx_conf.ini
+- name: nsx-nova-etc
+  files:
+  - config/nova-compute.conf

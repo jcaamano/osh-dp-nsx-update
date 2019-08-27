@@ -1,0 +1,7 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- resources/deploy-neutron-server.yaml
+- resources/ds-nova-compute-default.yaml
+- resources/job-neutron-db-init.yaml
+- resources/job-neutron-db-sync.yaml

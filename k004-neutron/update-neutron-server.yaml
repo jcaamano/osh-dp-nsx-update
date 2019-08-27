@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: neutron-server
+spec:
+  template:
+    spec:
+      containers:
+      - name: neutron-server
+        image: loci-neutron-nsxt:rocky-opensuse_15
+        volumeMounts:
+        - mountPath: /tmp/neutron-server.sh
+          name: nsx-neutron-bin
+          readOnly: true
+          subPath: neutron-server.sh
+        - mountPath: /etc/neutron/neutron.conf
+          name: nsx-neutron-etc
+          readOnly: true
+          subPath: neutron.conf
+        - mountPath: /etc/neutron/plugins/nsx/nsx_conf.ini
+          name: nsx-neutron-etc
+          readOnly: true
+          subPath: nsx_conf.ini
+        - mountPath: /var/lib/neutron/tmp
+          name: pod-tmp
+      volumes:
+      - configMap:
+          defaultMode: 365
+          name: nsx-neutron-bin
+        name: nsx-neutron-bin
+      - name: nsx-neutron-etc
+        secret:
+          defaultMode: 292
+          secretName: nsx-neutron-etc
+      initContainers:
+      - name: init
+        env:
+        - name: DEPENDENCY_JOBS_JSON
+          value: '[{"labels": {"application": "neutron"}}]'

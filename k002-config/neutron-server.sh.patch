@@ -1,0 +1,11 @@
+--- a/neutron-server.sh 2019-08-27 13:03:55.217274218 +0000
++++ b/neutron-server.sh 2019-08-27 13:04:12.149111569 +0000
+@@ -8,7 +8,7 @@
+ function start () {
+   exec neutron-server \
+         --config-file /etc/neutron/neutron.conf \
+-        --config-file /etc/neutron/plugins/ml2/nsx_conf.ini
++        --config-file /etc/neutron/plugins/nsx/nsx_conf.ini
+ }
+ 
+ function stop () {

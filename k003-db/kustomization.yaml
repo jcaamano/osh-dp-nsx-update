@@ -1,0 +1,7 @@
+bases:
+ - ../k002-config
+patchesStrategicMerge:
+- patch-neutron-db-init.yaml
+- patch-neutron-db-sync.yaml
+transformers:
+- hash-neutron-db.yaml

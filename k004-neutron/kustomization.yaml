@@ -1,0 +1,5 @@
+bases:
+ - ../k003-db
+
+patchesStrategicMerge:
+- update-neutron-server.yaml

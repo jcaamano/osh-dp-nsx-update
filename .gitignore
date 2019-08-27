@@ -1,0 +1,5 @@
+k001-base/resources
+k002-config/config
+k004-neutron/image
+**/*.so
+nsx_update.yaml

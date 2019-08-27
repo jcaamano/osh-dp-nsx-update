@@ -1,0 +1,7 @@
+apiVersion: osh_dp_nsx
+kind: HashTransformer
+metadata:
+  name: update-db-jobs
+target:
+  kind: Job
+  name: neutron-db-*

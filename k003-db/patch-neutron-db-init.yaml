@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: neutron-db-init
+  labels:
+  - controller-uid: delete
+    $patch: delete
+  - job-name: delete
+    $patch: delete
+spec:
+  selector:
+    $patch: delete
+  template:
+    metadata:
+      labels:
+      - controller-uid: delete
+        $patch: delete
+      - job-name: delete
+        $patch: delete

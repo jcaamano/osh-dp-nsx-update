@@ -1,0 +1,37 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: neutron-db-sync
+  labels:
+  - controller-uid: delete
+    $patch: delete
+  - job-name: delete
+    $patch: delete
+spec:
+  selector:
+    $patch: delete
+  template:
+    metadata:
+      labels:
+      - controller-uid: delete
+        $patch: delete
+      - job-name: delete
+        $patch: delete
+    spec:
+      containers:
+      - name: neutron-db-sync
+        image: loci-neutron-nsxt:rocky-opensuse_15
+        volumeMounts:
+        - mountPath: /etc/neutron/plugins/nsx/nsx_conf.ini
+          name: nsx-neutron-etc
+          readOnly: true
+          subPath: nsx_conf.ini
+        - mountPath: /etc/neutron/neutron.conf
+          name: nsx-neutron-etc
+          readOnly: true
+          subPath: neutron.conf
+      volumes:
+      - name: nsx-neutron-etc
+        secret:
+          defaultMode: 292
+          secretName: nsx-neutron-etc

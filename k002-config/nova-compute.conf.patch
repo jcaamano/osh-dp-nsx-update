@@ -1,0 +1,10 @@
+--- a/nova-compute.conf 2019-08-27 12:30:54.520301102 +0000
++++ b/nova-compute.conf 2019-08-27 12:29:08.101323380 +0000
+@@ -69,6 +69,7 @@
+ rbd_user = cinder
+ virt_type = qemu
+ [neutron]
++ovs_bridge = nsx-managed 
+ auth_type = password
+ auth_url = http://keystone-api.openstack.svc.cluster.local:5000/v3
+ auth_version = v3

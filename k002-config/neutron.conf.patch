@@ -1,0 +1,22 @@
+--- a/neutron.conf	2019-09-03 18:43:37.659417773 +0200
++++ b/neutron.conf	2019-09-03 18:44:48.994737538 +0200
+@@ -3,10 +3,9 @@
+ allow_overlapping_ips = true
+ api_workers = 1
+ bind_port = 9696
+-core_plugin = ml2
++core_plugin = vmware_nsx.plugin.NsxV3Plugin
+ default_availability_zones = nova
+ dhcp_agents_per_network = 1
+-interface_driver = openvswitch
+ l3_ha = false
+ l3_ha_network_type = vxlan
+ log_config_append = /etc/neutron/logging.conf
+@@ -14,7 +13,6 @@
+ network_auto_schedule = true
+ router_auto_schedule = true
+ rpc_workers = 4
+-service_plugins = router
+ transport_url = rabbit://neutron:password@rabbitmq-rabbitmq-0.rabbitmq.openstack.svc.cluster.local:5672,neutron:password@rabbitmq-rabbitmq-1.rabbitmq.openstack.svc.cluster.local:5672/neutron
+ [agent]
+ root_helper = sudo /var/lib/openstack/bin/neutron-rootwrap /etc/neutron/rootwrap.conf

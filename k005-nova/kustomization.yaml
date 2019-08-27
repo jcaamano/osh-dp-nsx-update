@@ -1,0 +1,5 @@
+bases:
+ - ../k004-neutron
+
+patchesStrategicMerge:
+- update-nova-server.yaml
